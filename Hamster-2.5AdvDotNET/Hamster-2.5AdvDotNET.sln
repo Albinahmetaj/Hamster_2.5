@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainFrontend", "Hamster-2.5AdvDotNET\MainFrontend.csproj", "{9F6C5925-1B32-469F-B5D6-8A3006F416AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{F2F5DD30-7C9B-4161-AEF0-BEFC1B13D28B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F6C5925-1B32-469F-B5D6-8A3006F416AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F6C5925-1B32-469F-B5D6-8A3006F416AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F6C5925-1B32-469F-B5D6-8A3006F416AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F6C5925-1B32-469F-B5D6-8A3006F416AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2F5DD30-7C9B-4161-AEF0-BEFC1B13D28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2F5DD30-7C9B-4161-AEF0-BEFC1B13D28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2F5DD30-7C9B-4161-AEF0-BEFC1B13D28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2F5DD30-7C9B-4161-AEF0-BEFC1B13D28B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF24AB4E-810C-4CB8-943B-A9A3EDB72E64}
+	EndGlobalSection
+EndGlobal

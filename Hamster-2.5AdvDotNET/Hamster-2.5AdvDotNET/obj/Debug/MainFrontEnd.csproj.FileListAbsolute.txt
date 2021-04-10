@@ -1,0 +1,6 @@
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\Hamster-2.5AdvDotNET.exe.config
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\Hamster-2.5AdvDotNET.exe
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\Hamster-2.5AdvDotNET.pdb
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\obj\Debug\MainFrontEnd.csproj.CoreCompileInputs.cache
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\obj\Debug\Hamster-2.5AdvDotNET.exe
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\obj\Debug\Hamster-2.5AdvDotNET.pdb
