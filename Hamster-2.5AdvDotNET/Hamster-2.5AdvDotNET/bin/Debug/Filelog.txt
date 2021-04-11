@@ -1,0 +1,93 @@
+Flyttade hamster med namn: ASH,ägarnamn: JOLIE ANDERSSON, ålder: 30 och kön M till Bur från Kön
+Flyttade hamster med namn: ASH,ägarnamn: JOLIE ANDERSSON, ålder: 30 och kön M till Bur från Kön
+Flyttade hamster med namn: GANDALF,ägarnamn: BO BERGMAN, ålder: 29 och kön K till Bur från Kön
+Flyttade hamster med namn: ASH, ägarnamn: JOLIE ANDERSSON, ålder: 30 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: ASH, ägarnamn: JOLIE ANDERSSON, ålder: 30 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: GANDALF, ägarnamn: BO BERGMAN, ålder: 29 och kön K till Aktivitet från Bur.
+Hamster med namn GANDALF gick hem och motionerade 18 gånger
+Hamster med namn ASH gick hem och motionerade 17 gånger
+Hamster med namn ASH gick hem och motionerade 17 gånger
+Flyttade hamster med namn: ARWEN,ägarnamn: ANNA TURESSON, ålder: 27 och kön M till Bur från Kön
+Flyttade hamster med namn: MELISSA,ägarnamn: CARITA GRAN, ålder: 25 och kön K till Bur från Kön
+Flyttade hamster med namn: NORA,ägarnamn: JENNIFER LAWRENCE, ålder: 20 och kön K till Bur från Kön
+Flyttade hamster med namn: ARWEN, ägarnamn: ANNA TURESSON, ålder: 27 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: MELISSA, ägarnamn: CARITA GRAN, ålder: 25 och kön K till Aktivitet från Bur.
+Flyttade hamster med namn: NORA, ägarnamn: JENNIFER LAWRENCE, ålder: 20 och kön K till Aktivitet från Bur.
+Hamster med namn NORA gick hem och motionerade 12 gånger
+Hamster med namn MELISSA gick hem och motionerade 17 gånger
+Hamster med namn ARWEN gick hem och motionerade 18 gånger
+Flyttade hamster med namn: ISABELLE,ägarnamn: MARTINA LÖFSKOG, ålder: 19 och kön M till Bur från Kön
+Flyttade hamster med namn: ISABELLE,ägarnamn: MARTINA LÖFSKOG, ålder: 19 och kön K till Bur från Kön
+Flyttade hamster med namn: STELLA,ägarnamn: BERTE QVARN, ålder: 17 och kön M till Bur från Kön
+Flyttade hamster med namn: ISABELLE, ägarnamn: MARTINA LÖFSKOG, ålder: 19 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: ISABELLE, ägarnamn: MARTINA LÖFSKOG, ålder: 19 och kön K till Aktivitet från Bur.
+Flyttade hamster med namn: STELLA, ägarnamn: BERTE QVARN, ålder: 17 och kön M till Aktivitet från Bur.
+Hamster med namn STELLA gick hem och motionerade 13 gånger
+Hamster med namn ISABELLE gick hem och motionerade 13 gånger
+Hamster med namn ISABELLE gick hem och motionerade 12 gånger
+Flyttade hamster med namn: MOLLY,ägarnamn: JOHANNA JOHANSSON, ålder: 18 och kön K till Bur från Kön
+Flyttade hamster med namn: STELLA,ägarnamn: BERTE QVARN, ålder: 17 och kön K till Bur från Kön
+Flyttade hamster med namn: THOR,ägarnamn: VLERA KARLSSON, ålder: 16 och kön M till Bur från Kön
+Flyttade hamster med namn: MOLLY, ägarnamn: JOHANNA JOHANSSON, ålder: 18 och kön K till Aktivitet från Bur.
+Flyttade hamster med namn: STELLA, ägarnamn: BERTE QVARN, ålder: 17 och kön K till Aktivitet från Bur.
+Flyttade hamster med namn: THOR, ägarnamn: VLERA KARLSSON, ålder: 16 och kön M till Aktivitet från Bur.
+Hamster med namn THOR gick hem och motionerade 14 gånger
+Hamster med namn STELLA gick hem och motionerade 16 gånger
+Hamster med namn MOLLY gick hem och motionerade 17 gånger
+Flyttade hamster med namn: STELLA,ägarnamn: BERTE QVARN, ålder: 17 och kön M till Bur från Kön
+Flyttade hamster med namn: LUDDE,ägarnamn: BELINDA LARSSON, ålder: 15 och kön M till Bur från Kön
+Flyttade hamster med namn: LEAH,ägarnamn: ELISABETH ELIASSON, ålder: 14 och kön K till Bur från Kön
+Flyttade hamster med namn: STELLA, ägarnamn: BERTE QVARN, ålder: 17 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: LUDDE, ägarnamn: BELINDA LARSSON, ålder: 15 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: LEAH, ägarnamn: ELISABETH ELIASSON, ålder: 14 och kön K till Aktivitet från Bur.
+Hamster med namn LEAH gick hem och motionerade 9 gånger
+Hamster med namn LUDDE gick hem och motionerade 9 gånger
+Hamster med namn STELLA gick hem och motionerade 10 gånger
+Flyttade hamster med namn: SAGA,ägarnamn: VIKTOR ISAKSSON, ålder: 12 och kön M till Bur från Kön
+Flyttade hamster med namn: ERIK,ägarnamn: TOM NORDH, ålder: 13 och kön M till Bur från Kön
+Flyttade hamster med namn: KURT,ägarnamn: JOHN BENSON, ålder: 11 och kön K till Bur från Kön
+Flyttade hamster med namn: SAGA, ägarnamn: VIKTOR ISAKSSON, ålder: 12 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: ERIK, ägarnamn: TOM NORDH, ålder: 13 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: KURT, ägarnamn: JOHN BENSON, ålder: 11 och kön K till Aktivitet från Bur.
+Hamster med namn KURT gick hem och motionerade 9 gånger
+Hamster med namn ERIK gick hem och motionerade 10 gånger
+Hamster med namn SAGA gick hem och motionerade 8 gånger
+Flyttade hamster med namn: HUGO,ägarnamn: ELROND ALVENSSON, ålder: 9 och kön K till Bur från Kön
+Flyttade hamster med namn: ELSA,ägarnamn: JAN HALLGREN, ålder: 7 och kön K till Bur från Kön
+Flyttade hamster med namn: AGNES,ägarnamn: SAURON DARKSIDESSON, ålder: 8 och kön M till Bur från Kön
+Flyttade hamster med namn: HUGO, ägarnamn: ELROND ALVENSSON, ålder: 9 och kön K till Aktivitet från Bur.
+Flyttade hamster med namn: ELSA, ägarnamn: JAN HALLGREN, ålder: 7 och kön K till Aktivitet från Bur.
+Flyttade hamster med namn: AGNES, ägarnamn: SAURON DARKSIDESSON, ålder: 8 och kön M till Aktivitet från Bur.
+Hamster med namn AGNES gick hem och motionerade 4 gånger
+Hamster med namn ELSA gick hem och motionerade 4 gånger
+Hamster med namn HUGO gick hem och motionerade 5 gånger
+Flyttade hamster med namn: CARL,ägarnamn: LISA NILSSON, ålder: 6 och kön M till Bur från Kön
+Flyttade hamster med namn: ELSA,ägarnamn: JAN HALLGREN, ålder: 7 och kön M till Bur från Kön
+Flyttade hamster med namn: DANNE,ägarnamn: LOTTA LORANDSSON, ålder: 5 och kön M till Bur från Kön
+Flyttade hamster med namn: CARL, ägarnamn: LISA NILSSON, ålder: 6 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: ELSA, ägarnamn: JAN HALLGREN, ålder: 7 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: DANNE, ägarnamn: LOTTA LORANDSSON, ålder: 5 och kön M till Aktivitet från Bur.
+Hamster med namn DANNE gick hem och motionerade 3 gånger
+Hamster med namn ELSA gick hem och motionerade 6 gånger
+Hamster med namn CARL gick hem och motionerade 6 gånger
+Flyttade hamster med namn: DANNE,ägarnamn: LOTTA LORANDSSON, ålder: 5 och kön K till Bur från Kön
+Flyttade hamster med namn: BJÖRN,ägarnamn: CARL HAMILTON, ålder: 4 och kön K till Bur från Kön
+Flyttade hamster med namn: YLVA,ägarnamn: MIKAELA JOHANSSON, ålder: 3 och kön K till Bur från Kön
+Flyttade hamster med namn: DANNE, ägarnamn: LOTTA LORANDSSON, ålder: 5 och kön K till Aktivitet från Bur.
+Flyttade hamster med namn: BJÖRN, ägarnamn: CARL HAMILTON, ålder: 4 och kön K till Aktivitet från Bur.
+Flyttade hamster med namn: YLVA, ägarnamn: MIKAELA JOHANSSON, ålder: 3 och kön K till Aktivitet från Bur.
+Hamster med namn YLVA gick hem och motionerade 4 gånger
+Hamster med namn BJÖRN gick hem och motionerade 5 gånger
+Hamster med namn DANNE gick hem och motionerade 3 gånger
+Flyttade hamster med namn: BJÖRN,ägarnamn: CARL HAMILTON, ålder: 4 och kön M till Bur från Kön
+Flyttade hamster med namn: ALICE,ägarnamn: JULIA ANDERSSON, ålder: 2 och kön M till Bur från Kön
+Flyttade hamster med namn: ALICE,ägarnamn: JULIA ANDERSSON, ålder: 2 och kön K till Bur från Kön
+Flyttade hamster med namn: BJÖRN, ägarnamn: CARL HAMILTON, ålder: 4 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: ALICE, ägarnamn: JULIA ANDERSSON, ålder: 2 och kön M till Aktivitet från Bur.
+Flyttade hamster med namn: ALICE, ägarnamn: JULIA ANDERSSON, ålder: 2 och kön K till Aktivitet från Bur.
+Hamstrar med namn BJÖRN har ännu inte motionerat, väntar tills de motionerat minst 1 gång under vistelsen
+Hamstrar som väntades motionera med namn BJÖRN har nu motionerat 1 gånger
+Hamster med namn BJÖRN gick hem och motionerade 0 gånger
+Hamstrar med namn ALICE har ännu inte motionerat, väntar tills de motionerat minst 1 gång under vistelsen
+Hamstrar som väntades motionera med namn ALICE har nu motionerat 2 gånger
+Hamster med namn ALICE gick hem och motionerade 0 gånger

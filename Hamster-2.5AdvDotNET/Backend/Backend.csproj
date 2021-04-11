@@ -53,9 +53,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InfoGenerator.cs" />
+    <Compile Include="HamsterDagis.cs" />
+    <Compile Include="HamsterDb.cs" />
+    <Compile Include="HamsterEventArgs.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Objects\Aktivitet.cs" />
+    <Compile Include="Objects\Bur.cs" />
+    <Compile Include="Objects\Hamster.cs" />
+    <Compile Include="Objects\HamsterKö.cs" />
+    <Compile Include="Objects\ResterandeHamster.cs" />
+    <Compile Include="Objects\Hemfärd.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

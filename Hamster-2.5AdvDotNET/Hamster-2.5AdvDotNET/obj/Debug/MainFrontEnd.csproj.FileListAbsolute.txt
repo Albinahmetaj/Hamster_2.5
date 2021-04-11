@@ -4,3 +4,12 @@ C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNE
 C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\obj\Debug\MainFrontEnd.csproj.CoreCompileInputs.cache
 C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\obj\Debug\Hamster-2.5AdvDotNET.exe
 C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\obj\Debug\Hamster-2.5AdvDotNET.pdb
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\Backend.exe
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\EntityFramework.dll
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\Backend.pdb
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\Backend.exe.config
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\EntityFramework.xml
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\obj\Debug\MainFrontEnd.csprojAssemblyReference.cache
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Hamster-2.5AdvDotNET\obj\Debug\MainFrontEnd.csproj.CopyComplete
