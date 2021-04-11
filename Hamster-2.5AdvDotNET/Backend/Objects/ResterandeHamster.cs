@@ -10,5 +10,6 @@ namespace Backend.Objects
     {
         public int Id { get; set; }
         public virtual List<Hamster> RestHamster { get; set; }
+
     }
 }

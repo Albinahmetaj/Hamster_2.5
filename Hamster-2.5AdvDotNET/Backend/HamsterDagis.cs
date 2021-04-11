@@ -8,41 +8,40 @@ using System.Threading.Tasks;
 
 namespace Backend
 {
+    //Den här klassen representerar hamstermetoderna och logiken för hamsterdagiset
     public class HamsterDagis
     {
-        //Ändra Denna variabel för att köra mot mer eller mindre patienter.
+        // variabel som representerar hur många hamstrar man vill köra igång, ändra denna för fler eller färre.
         public int AmountToSimulate = 30;
-        //Variabel för att styra hela simuleringen. Körs till Dismisspatients är > NumberOfPatientsToSimulate.
+        // denna variable är för att styra hela simuleringen, den körs tills hemfärd är större än > AmountToSimulate
         public int HamstersHomecoming = 0;
-        //Skapar en instans av alla sjukhusavdelnignar för att lätt kunna ladda in de aktualla avdelningarna från databasen.
-        //Hittar alltid därför rätt avdelning i databasen med hjälp av tex CurrentQueue.Id.
-
+       
         static HamsterKö CurrentQueue = new HamsterKö();
         static Bur CurrentCage = new Bur();
         static Aktivitet CurrentActivity = new Aktivitet();
-        static Hemfärd CurrenyHomecoming = new Hemfärd();
+        static Hemfärd CurrentHomecoming = new Hemfärd();
         static ResterandeHamster CurrentExercise = new ResterandeHamster();
 
+        // Eventhandler som kallas på när dagiset ska raisa ett/flera event
         public event EventHandler<HamsterEventArgs> HamsterMovedEvent;
-        /// <summary>
-        /// EventRaiser. Kallar på denna när hospital skall raisa ett event.
-        /// </summary>
-        /// <param name="e"></param>
-        /// 
+      
 
         internal virtual void OnHamsterMoved(HamsterEventArgs e)
         {
+            //raisar eventet
             HamsterMovedEvent?.Invoke(this, e);
         }
-        /// <summary>
-        /// Lägger till 30 patienter. Ändra på NumberOfPatientsToSimulate om man vill köra större simulering.
-        /// </summary>
+
+
+        //Metod som lägger till hamstrar genom en for loop, ändra på variablen AmountToSimulate om man vill köra en större eller mindre simulering
         public void AddHamster()
         {
             using (var hamsterDb = new HamsterDb())
             {
-                DateTime dateTime = new DateTime(2021, 4, 11, 07, 00, 00);
-
+                //Datetime för att printa ut dagens datum i consolen
+                DateTime dateAndTime = DateTime.Now;
+                DateTime date = dateAndTime.Date;
+                
 
                 Console.Write("\nLaddar Hamstrar till dagiset");
                 Thread.Sleep(1000);
@@ -54,62 +53,56 @@ namespace Backend
                 Thread.Sleep(1000);
                 Console.Write(".");
                 Console.WriteLine("");
-                Console.WriteLine("Checkar in hamstrar...Dagens datum och tid är: {0}", dateTime);
+                Console.WriteLine($"Checkar in hamstrar...Dagens datum och tid är: {date.ToString("dd/MM/yyyy")} 07:00:00");
                 Console.WriteLine();
-                //var patient = new Patient(Randomers.GenerateName(), Randomers.GenerateÄgarNamn(), Randomers.GenerateÅlder(), Randomers.GenerateKön(), Randomers.GenerateSSN(), Randomers.GenerateSymptomLevel());
-
-                //var Patient = new Patient(Randomers.GenerateSSN(), Randomers.GenerateSymptomLevel());
+              
+                //var Patient = new Hamster(RandomLogic.GenerateIdentity(), RandomLogic.GenerateExerciseLevel());
 
                 //var hamster = Program.ProcessHamstrar("Hamsterlista30.csv");
-                //if (!db.Patients.Any())
+                //if (!db.Hamster.Any())
                 //{
                 //    foreach (var item in hamster)
                 //    {
-                //        db.Patients.Add(item);
-                //        CurrentQueue.PatientsInQueue.Add(item);
+                //        db.Hamster.Add(item);
+                //        CurrentQueue.HamsterIKö.Add(item);
                 //    }
                 //}
 
                 for (int i = 0; i < AmountToSimulate; i++)
                 {
-
-                    Thread.Sleep(200); // För att det inte ska bli dubletter av Patient. Random arbetar med clockcykler
-                                       //var patient = new Patient(Randomers.GenerateName(), Randomers.GenerateÄgarNamn(), Randomers.GenerateÅlder(), Randomers.GenerateKön(), Randomers.GenerateSSN(), Randomers.GenerateSymptomLevel());
+                    //Blir dubbletter av hamster, vet ej varför (kolla med Paul/Adam för en eventuell lösning)
+                    Thread.Sleep(200); 
                     var hamster = new Hamster(RandomLogic.GenerateIdentity(), RandomLogic.GenerateExerciseLevel());
                     hamsterDb.Hamster.Add(hamster);
                     CurrentQueue.HamsterIKö.Add(hamster);
 
                 }
 
-                //sorterar databasen för att det skulle vara lättare att följa under testning osv. fyller ingen funktion för programmets funktionalitet.
-                CurrentQueue.HamsterIKö = CurrentQueue.HamsterIKö.OrderByDescending(x => x.hamsterID).ThenBy(x => x.MotionsNivå).ToList(); //Sorterar före inläggning i db.
+                //Sorterar databasen med hjälp av hamsterID och Motionsnivå, just för att det ska bli lättare att följa under testning. Påverkar ej funktionerna i programmet
+                CurrentQueue.HamsterIKö = CurrentQueue.HamsterIKö.OrderByDescending(x => x.hamsterID).ThenBy(x => x.MotionsNivå).ToList(); 
+                //Nedanför lägger vi till data i alla avdelningarna i databasen för att göra det möjligt att ladda in dem senare
                 hamsterDb.Kö.Add(CurrentQueue);
                 hamsterDb.Bur.Add(CurrentCage);
                 hamsterDb.Aktivitet.Add(CurrentActivity);
-                hamsterDb.Hemfärd.Add(CurrenyHomecoming);
+                hamsterDb.Hemfärd.Add(CurrentHomecoming);
                 hamsterDb.ResterandeHamster.Add(CurrentExercise);
-                //Lägger till alla avdelningar i databasen så dom finns att ladda in senare.
+                
                 hamsterDb.SaveChanges();
             }
         }
-
+        //Metod som tar hand om flyttningslogiken mellan de olika avdelningarna/stationerna
         public void MoveHamster()
         {
             using (var hamsterDb = new HamsterDb())
             {
-                //Laddar in rätt avdelningar från databasen.
+                //Variablernas funktion = laddar in rätt avdelningar från databasen
                 var queue = hamsterDb.Kö.Find(CurrentQueue.Id);
                 var activity = hamsterDb.Aktivitet.Find(CurrentActivity.Id);
                 var cage = hamsterDb.Bur.Find(CurrentCage.Id);
 
 
-                //Laddar in avdelningarnas patienter om dom har patienter i sig.
-                //Behöver inte load IVA för vi ska inte ta bort ifrån iva i detta läget.
-                //if (sanatorium.Patients.Count > 0)
-                //{
-                //    db.Entry(sanatorium).Collection(p => p.Patients).Load();
-                //    sanatorium.Patients = sanatorium.Patients.OrderByDescending(x => x.patientID).ThenBy(x => x.SymptomLevel).ToList();
-                //}
+                //Laddar in avdelningarna ifall de har hamstrar i sig
+                
                 if (queue.HamsterIKö.Count > 0)
                 {
                     hamsterDb.Entry(queue).Collection(p => p.HamsterIKö).Load();
@@ -129,35 +122,35 @@ namespace Backend
                 }
 
                 hamsterDb.SaveChanges();
-                //Fylller på 5 patienter i IVA första varvet, sedan fyller vi på när plats finns.
+                //Fyller på 3 hamstrar i Bur
                 while (cage.BurHamster.Count < 3)
                 {
                     int result = FindHamster();
                     Hamster hamster;
-                    //Om patient kom från sanatorium
+                    //Om hamster kom från kö
                     if (result == 0)
                     {
                         hamster = queue.HamsterIKö.FirstOrDefault();
                         cage.BurHamster.Add(hamster);
                         hamsterDb.SaveChanges();
 
-                        OnHamsterMoved(new HamsterEventArgs(hamster)); //Raisar Event att flytt skett
+                        OnHamsterMoved(new HamsterEventArgs(hamster)); //Raisar HamsterMovedEvent att flytt skett
                         queue.HamsterIKö.Remove(hamster);
                     }
-                    //Om patient kom från kön
+                    //Om hamster kom från kö
                     else
                     {
                         hamster = queue.HamsterIKö.FirstOrDefault();
                         cage.BurHamster.Add(hamster);
                         hamsterDb.SaveChanges();
 
-                        OnHamsterMoved(new HamsterEventArgs(hamster)); //Raisar event att flytt skett
+                        OnHamsterMoved(new HamsterEventArgs(hamster)); //Raisar HamsterMovedEvent att flytt skett
                         queue.HamsterIKö.Remove(hamster);
 
                     }
                 }
                 hamsterDb.SaveChanges();
-                //Första gången lägger vi till 10 patienter i sanatorium, annars fyller vi på efterhand.
+                //Fyller på 6 hamstrar i aktivitet från bur
                 while (activity.AktivitetHamster.Count < 6)
                 {
                     var patient = cage.BurHamster.FirstOrDefault();
@@ -172,10 +165,7 @@ namespace Backend
 
             }
         }
-        /// <summary>
-        /// Hittar den sjukaste patienten från kö eller sanatorium
-        /// </summary>
-        /// <returns>1 eller 0 som representation av vilken avdeling vi ska ta bort ifrån</returns>
+        // Metoden hittar den hamstern som väntat längst / ej motionerat eller motionerat minst
         private static int FindHamster()
         {
             using (var hamsterDb = new HamsterDb())
@@ -200,7 +190,7 @@ namespace Backend
                     cage.BurHamster = cage.BurHamster.OrderByDescending(x => x.hamsterID).ThenBy(x => x.MotionsNivå).ToList();
                     hamster2 = cage.BurHamster[0];
                 }
-                //Försöker ladda in kölista och sanatoriumlista
+                
                 if (activity.AktivitetHamster.Count > 0)
                 {
                     hamsterDb.Entry(activity).Collection(p => p.AktivitetHamster).Load();
@@ -208,9 +198,8 @@ namespace Backend
                     hamster3 = activity.AktivitetHamster[0];
                 }
 
-                //Returnerar 0 för sanatorium och 1 för kön.
-                //Hittade vi sjuk patient från båda avdelningarna jämför vi först
-                //Symptomlevel och sedan Birthdate.
+                // returnerar 0 för bur och 1 för aktivitet
+                // hittar vi hamster från båda avdelningarna så kollar vi den som väntat längst/motionerat minst
                 if (hamster2 != null && hamster3 != null)
                 {
                     if (hamster2.MotionsNivå.CompareTo(hamster3.MotionsNivå) == 0)
@@ -219,7 +208,7 @@ namespace Backend
                     }
                     return hamster2.MotionsNivå > hamster3.MotionsNivå ? 0 : 1;
                 }
-                //Om sanatorium inte laddade är patient2 null och därför gör vi ingen jämföring ovan och returnerar direkt 0 för kö.
+                // om aktivitet stationen inte är laddad med hamster så är hamster 3 null och vi gör därför ingen jämföring ovan och returnerar direkt 0 för bur
                 else if (hamster2 != null)
                 {
                     return 0;
@@ -230,14 +219,12 @@ namespace Backend
                 }
             }
         }
-        /// <summary>
-        /// Uppdaterar patienternas symptomLevelel.
-        /// </summary>
+       //Metod uppdaterar hur många gånger hamstrarna motionerat med hjälp utav random funktioner och metoden ExerciseRandomizer
         public void UpdateExerciseLevel()
         {
             using (var hamsterDb = new HamsterDb())
             {
-                //Laddar in listan för varje avdelning. och för varje patient i denna lista kör vi metoden SymptomUpdater += patient.SymptomLevel.
+                //Laddar in listan för varje avdelning
                 var queue = hamsterDb.Kö.Find(CurrentQueue.Id);
                 hamsterDb.Entry(queue).Collection(x => x.HamsterIKö).Load();
                 foreach (var hamster in queue.HamsterIKö)
@@ -249,36 +236,39 @@ namespace Backend
                 hamsterDb.Entry(cage).Collection(x => x.BurHamster).Load();
                 foreach (var hamster in cage.BurHamster)
                 {
-                    hamster.MotionsNivå += ExerciseRandomizer(2); //1 för kö
+                    hamster.MotionsNivå += ExerciseRandomizer(2); //2 för bur
                     hamsterDb.SaveChanges();
                 }
                 var activity = hamsterDb.Aktivitet.Find(CurrentActivity.Id);
                 hamsterDb.Entry(activity).Collection(x => x.AktivitetHamster).Load();
                 foreach (var hamster in activity.AktivitetHamster)
                 {
-                    hamster.MotionsNivå += ExerciseRandomizer(3); //1 för kö
+                    hamster.MotionsNivå += ExerciseRandomizer(3); //3 för aktivitet
                     hamsterDb.SaveChanges();
                 }
-                var exercising = hamsterDb.Hemfärd.Find(CurrenyHomecoming.Id);
-                hamsterDb.Entry(exercising).Collection(x => x.HemfärdHamster).Load();
-                foreach (var hamster in exercising.HemfärdHamster)
+                var hemfärdhamster = hamsterDb.Hemfärd.Find(CurrentHomecoming.Id);
+                hamsterDb.Entry(hemfärdhamster).Collection(x => x.HemfärdHamster).Load();
+                foreach (var hamster in hemfärdhamster.HemfärdHamster)
                 {
-                    hamster.MotionsNivå += ExerciseRandomizer(4);
+                    hamster.MotionsNivå += ExerciseRandomizer(4); //4 för hemfärd
                     hamsterDb.SaveChanges();
                 }
 
+                var exercisehamster = hamsterDb.ResterandeHamster.Find(CurrentExercise.Id);
+                hamsterDb.Entry(exercisehamster).Collection(x => x.RestHamster).Load();
+                foreach (var hamster in exercisehamster.RestHamster)
+                {
+                    hamster.MotionsNivå += ExerciseRandomizer(4); //5 för hamstrar som e kvar
+                    hamsterDb.SaveChanges();
+                }
             }
         }
-        /// <summary>
-        /// Uppdaterar symptomlevel för rätt department.
-        /// </summary>
-        /// <param name="station">kö, iva, eller sanatorium.</param>
-        /// <returns>symptomförändring</returns>
+        //Metod som uppdaterar motionsnivån för rätt avdelning
         public int ExerciseRandomizer(int station)
         {
             int exerciseChange = 0;
             Random rd = new Random();
-            if (station == 1) //KÖ
+            if (station == 1) //kö
             {
                 int odds = rd.Next(1, 100);
                 if (odds <= 50)
@@ -299,7 +289,7 @@ namespace Backend
 
                 }
             }
-            else if (station == 2) //IVA
+            else if (station == 2) //bur
             {
                 int odds = rd.Next(1, 100);
                 if (odds <= 25)
@@ -320,7 +310,7 @@ namespace Backend
                 }
 
             }
-            else if (station == 3) //SANATORIUM
+            else if (station == 3) //aktivitet
             {
                 int odds = rd.Next(1, 100);
                 if (odds <= 55)
@@ -341,7 +331,7 @@ namespace Backend
                 }
 
             }
-            else if (station == 4)
+            else if (station == 4)//hemfärd/kvar i aktivitet
             {
                 int odds = rd.Next(1, 100);
                 if (odds <= 65)
@@ -363,16 +353,14 @@ namespace Backend
             }
             return exerciseChange;
         }
-        /// <summary>
-        /// Flyttar patienter till Healthy eller Afterlive om deras symptomlevel är under 0 eller 10 och uppåt.
-        /// </summary>
+        //Flyttar på hamstrarna beroende på hur många gånger de motionerat till respektive avdelning
         public void LogicForHomeOrStillExercising()
         {
             using (var hamsterDb = new HamsterDb())
             {
-                //Samma här. Laddar in ALLA listor denna gången för en patient kan bli frisk eller dör VARSOMHELST i sjukhuset.
+                //Vi laddar in alla listor för  att se om hamstern har motionerat eller ej
                 var queue = hamsterDb.Kö.Find(CurrentQueue.Id);
-                var home = hamsterDb.Hemfärd.Find(CurrenyHomecoming.Id);
+                var home = hamsterDb.Hemfärd.Find(CurrentHomecoming.Id);
                 var exercisingStill = hamsterDb.ResterandeHamster.Find(CurrentExercise.Id);
                 var activity = hamsterDb.Aktivitet.Find(CurrentActivity.Id);
                 var cage = hamsterDb.Bur.Find(CurrentCage.Id);
@@ -381,37 +369,39 @@ namespace Backend
                 hamsterDb.Entry(exercisingStill).Collection(x => x.RestHamster).Load();
                 hamsterDb.Entry(activity).Collection(x => x.AktivitetHamster).Load();
                 hamsterDb.Entry(cage).Collection(x => x.BurHamster).Load();
-                //Gör samma foreach för VARJE avdelning för att se vilka patienter som skall flyttas till healthy eller afterlife.
+                
+                // Foreach för varje avdelning för att se hamsterns motionsstatus och vilka hamstrar som ska flyttas vart
                 foreach (Hamster hamster in queue.HamsterIKö.ToList())
                 {
-
+                    //Här lägger vi till hamster i bur från kö och tar bort från kö
+                    //sedan raisar vi eventet om flytten
+                    // samma med alla loopar och itterationer nedanför
                     if (hamster.MotionsNivå == 0)
                     {
-                        cage.BurHamster.Add(hamster);          // vi lägger till i healthy eller afterlife beroende på IF. sedan tar bort från
-                        queue.HamsterIKö.Remove(hamster); // deras nuvarande plats, sen raisar event att det skett. alla loopar ser lika ut.
+                        cage.BurHamster.Add(hamster);          
+                        queue.HamsterIKö.Remove(hamster); 
                         hamsterDb.SaveChanges();
-                        // bara vilka avdelningar vi arbetar med som skiljer sig.
-                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar event att flytt skett.
-                        HamstersHomecoming++; //++ på dismissedpatients, denna variabel styr hela programmet. Dvs när alla patienter flyttats ut
-                                              // ur sjukhuset. (dom ligger i afterlife eller Healthy) kommer det sluta.
+                        
+                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
+                        HamstersHomecoming++; 
                     }
-                    //if (patient.SymptomLevel >= 1)
+                    //if (hamster.MotionsNivå >= 1)
                     //{
-                    //    sanatorium.Patients.Add(patient);
-                    //    iva.Patients.Remove(patient);
-                    //    db.SaveChanges();
-
-                    //    OnPatientMoved(new HospitalEventArgs(patient)); //raisar event att flytt skett.
-                    //    DismissedPatients++;
+                    //    activity.AktivitetHamster.Add(hamster);
+                    //    cage.BurHamster.Remove(hamster);
+                    //    hamsterDb.SaveChanges();
+                    //    OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
+                    //    HamstersHomecoming++;
                     //}
-                    //if(patient.SymptomLevel >= 10)
-                    //{
-                    //    afterLife.Patients.Add(patient);
-                    //    sanatorium.Patients.Add(patient);
-                    //    db.SaveChanges();
 
-                    //    OnPatientMoved(new HospitalEventArgs(patient)); //raisar event att flytt skett.
-                    //    DismissedPatients++;
+                    //if (hamster.MotionsNivå >= 10)
+                    //{
+                    //    exercisingStill.RestHamster.Add(hamster);
+                    //    activity.AktivitetHamster.Add(hamster);
+                    //    hamsterDb.SaveChanges();
+
+                    //    OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
+                    //    HamstersHomecoming++;
                     //}
 
                 }
@@ -423,7 +413,7 @@ namespace Backend
                         cage.BurHamster.Remove(hamster);
                         hamsterDb.SaveChanges();
 
-                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar event att flytt skett.
+                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
                         HamstersHomecoming++;
                     }
 
@@ -433,18 +423,19 @@ namespace Backend
                         cage.BurHamster.Remove(hamster);
                         hamsterDb.SaveChanges();
 
-                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar event att flytt skett.
+                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
                         HamstersHomecoming++;
                     }
 
-                    //if (patient.SymptomLevel >= 10)
+                    //if (hamster.MotionsNivå >= 10)
                     //{
-                    //    afterLife.Patients.Add(patient);
-                    //    iva.Patients.Remove(patient);
-                    //    db.SaveChanges();
+                    //    home.HemfärdHamster.Add(hamster);
+                    //    cage.BurHamster.Remove(hamster);
+                    //    hamsterDb.SaveChanges();
 
-                    //    OnPatientMoved(new HospitalEventArgs(patient)); //raisar event att flytt skett.
-                    //    DismissedPatients++;
+
+                    //    OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
+                    //    HamstersHomecoming++;
                     //}
 
 
@@ -457,7 +448,7 @@ namespace Backend
                         activity.AktivitetHamster.Remove(hamster);
                         hamsterDb.SaveChanges();
 
-                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar event att flytt skett.
+                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
                         HamstersHomecoming++;
                     }
                     if (hamster.MotionsNivå >= 2)
@@ -466,17 +457,16 @@ namespace Backend
                         activity.AktivitetHamster.Remove(hamster);
                         hamsterDb.SaveChanges();
 
-                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar event att flytt skett.
+                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
                         HamstersHomecoming++;
                     }
-                    //if (patient.SymptomLevel >= 1)
+                    //if (hamster.MotionsNivå >= 1)
                     //{
-                    //    afterLife.Patients.Add(patient);
-                    //    healthy.Patients.Remove(patient);
-                    //    db.SaveChanges();
-
-                    //    OnPatientMoved(new HospitalEventArgs(patient)); //raisar event att flytt skett.
-                    //    DismissedPatients++;
+                    //    home.HemfärdHamster.Add(hamster);
+                    //    exercisingStill.RestHamster.Remove(hamster);
+                    //    hamsterDb.SaveChanges();
+                    //    OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
+                    //    HamstersHomecoming++;
                     //}
 
                 }
@@ -489,7 +479,7 @@ namespace Backend
                         hamsterDb.SaveChanges();
 
 
-                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar event att flytt skett.
+                        OnHamsterMoved(new HamsterEventArgs(hamster)); //raisar HamsterMovedEvent att flytt skett.
                         HamstersHomecoming++;
                     }
                 }

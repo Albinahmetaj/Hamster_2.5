@@ -10,7 +10,7 @@ namespace Backend
 {
     public class HamsterDb:DbContext
     {
-        public HamsterDb() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NewHamsterDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+        public HamsterDb() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=advAlbinAhmetaj;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         {
 
         }

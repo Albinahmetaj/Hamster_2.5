@@ -57,6 +57,15 @@
     <Compile Include="HamsterDb.cs" />
     <Compile Include="HamsterEventArgs.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Migrations\202104111630400_initiate.cs" />
+    <Compile Include="Migrations\202104111630400_initiate.designer.cs">
+      <DependentUpon>202104111630400_initiate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104111639401_init.cs" />
+    <Compile Include="Migrations\202104111639401_init.designer.cs">
+      <DependentUpon>202104111639401_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Objects\Aktivitet.cs" />
     <Compile Include="Objects\Bur.cs" />
     <Compile Include="Objects\Hamster.cs" />
@@ -70,6 +79,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202104111630400_initiate.resx">
+      <DependentUpon>202104111630400_initiate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104111639401_init.resx">
+      <DependentUpon>202104111639401_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

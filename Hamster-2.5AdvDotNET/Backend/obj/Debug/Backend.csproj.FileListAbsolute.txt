@@ -10,3 +10,6 @@ C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Backend\bin\Debug\E
 C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Backend\bin\Debug\EntityFramework.xml
 C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Backend\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Backend\obj\Debug\Backend.csproj.CopyComplete
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Backend\obj\Debug\Backend.Migrations.initiate.resources
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Backend\obj\Debug\Backend.csproj.GenerateResource.cache
+C:\Users\Albin\source\repos\Hamster_2.5\Hamster-2.5AdvDotNET\Backend\obj\Debug\Backend.Migrations.init.resources

@@ -37,7 +37,10 @@ namespace Backend.Objects
         public virtual ResterandeHamster ResterandeHamster { get; set; }
 
 
+        public Hamster()
+        {
 
+        }
         public Hamster(/*string name, string ägarnamn, int ålder, string kön, */string identityNum, int motionsNivå)
         {
 
@@ -48,13 +51,13 @@ namespace Backend.Objects
             //Kön = kön;
             IdentityNum = identityNum;
             MotionsNivå = motionsNivå;
+            //CheckIn = checkain;
+            //checkain = DateTime.Now;
+
             CheckIn = CalculateCheckIn(identityNum);
         }
 
-        public Hamster()
-        {
-
-        }
+        
 
         public void GenereraNyHamster()
         {
@@ -131,11 +134,7 @@ namespace Backend.Objects
             return $"{this.Namn}, ägarnamn: {this.ÄgarNamn}, ålder {this.Ålder}, kön {this.Kön}%";
         }
 
-        /// <summary>
-        /// Calculates age from the randomized SSN
-        /// </summary>
-        /// <param name="identityNum">the SSN to convert to a birthdate</param>
-        /// <returns>Time of birth</returns>
+     
         public DateTime CalculateCheckIn(string identityNum)
         {
             string checkInDate = identityNum.Remove(8, 5);

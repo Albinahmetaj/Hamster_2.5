@@ -47,9 +47,7 @@ namespace Backend
 
 
 
-            //int index = r.Next(0, hamsterNamn.Count - 1);
-            //var name = hamsterNamn[index];
-            //hamsterNamn.Remove(name);
+            
             int temp = new Random().Next(0, hamstrar.Count);
             string Name = "";
             Name += hamstrar[temp].ToUpper();
@@ -101,15 +99,15 @@ namespace Backend
         {
             StringBuilder sr = new StringBuilder();
             Random r = new Random();
-            int year = r.Next(1940, 2020);
+            int year = r.Next(2021, 2021);
             sr.Append(year);
-            int month = r.Next(1, 12);
+            int month = r.Next(4, 4);
             if (month < 10)
             {
                 sr.Append("0");
             }
             sr.Append(month);
-            int day = r.Next(1, 28);
+            int day = r.Next(11, 13);
             if (day < 10)
             {
                 sr.Append("0");

@@ -1,9 +1,11 @@
 ﻿
 using Backend;
+using Backend.Objects;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -11,22 +13,23 @@ using System.Threading.Tasks;
 
 namespace Hamster_2._5AdvDotNET
 {
+    // TEST
     //public static class HamsterExtensions
     //{
-    //    public static IEnumerable<Patient> ToHamster(this IEnumerable<string> source)
-    //    {
-    //        foreach (var line in source)
-    //        {
-    //            var columns = line.Split(',');
-    //            yield return new Patient
-    //            {
-    //                Name = columns[0],
-    //                Ålder = int.Parse(columns[1]),
-    //                Kön = columns[2],
-    //                ÄgarNamn = columns[3]
-    //            };
-    //        }
-    //    }
+    //    //public static IEnumerable<Hamster> ToHamster(this IEnumerable<string> source)
+    //    //{
+    //    //    foreach (var line in source)
+    //    //    {
+    //    //        var columns = line.Split(',');
+    //    //        yield return new Hamster
+    //    //        {
+    //    //            Namn = columns[0],
+    //    //            Ålder = int.Parse(columns[1]),
+    //    //            Kön = columns[2],
+    //    //            ÄgarNamn = columns[3]
+    //    //        };
+    //    //    }
+    //    //}
     //}
     class Program
     {
@@ -34,6 +37,7 @@ namespace Hamster_2._5AdvDotNET
         public static HamsterDagis dagis = new HamsterDagis();
         static void Main(string[] args)
         {
+            //Console meny logic för de olika funktionerna
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<HamsterDb>());
             bool menu = true;
             while (menu)
@@ -46,8 +50,9 @@ namespace Hamster_2._5AdvDotNET
                 switch (valdTangent)
                 {
                     case ConsoleKey.D1:
+                        //kopplar metoden log som skall köras när eventet HamsterMovedEvent inträffar
                         dagis.HamsterMovedEvent += Logger.Log;
-                        RunThreads();
+                        StartThreads();
                         break;
 
                     case ConsoleKey.D2:
@@ -68,16 +73,19 @@ namespace Hamster_2._5AdvDotNET
         }
 
 
-        //public static List<Patient> ProcessHamstrar(string path)
+        //public static List<Hamster> ProcessHamstrar(string path)
         //{
         //    var query = File.ReadAllLines(path)
         //        .Where(l => l.Length > 1)
         //        .ToHamster();
         //    return query.ToList();
         //}
-        public static void RunThreads()
+
+        //En trådstartar metod som kör igång alla trådar och initieras i main
+        public static void StartThreads()
         {
-            DateTime dateTime = new DateTime(2021, 4, 11, 17, 00, 00);
+            DateTime dateAndTime = DateTime.Now;
+            DateTime date = dateAndTime.Date;
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             Thread thread1 = new Thread(dagis.AddHamster);
@@ -92,15 +100,13 @@ namespace Hamster_2._5AdvDotNET
             thread4.Join();
             stopwatch.Stop();
             Console.WriteLine();
-            Console.WriteLine("Checkar ut hamstrar för idag med datum och tid {0}", dateTime);
+            Console.WriteLine($"Checkar ut hamstrar för idag med datum och tid {date.ToString("dd/MM/yyyy")} 17:00:00");
             Console.Write("Tid för simulering {0} sekunder", stopwatch.ElapsedMilliseconds / 1000);
         }
-        //NEDAN LÅSER JAG MOVEPATIENTS OCH moveDeadOrHealthyPatients FÖR DÅ KAN MAN KÖRA SIMULERINGEN UTAN THREAD SLEEPS I MAXHASTIGHET OCH DEN BLIR
-        //ÄNDÅ KORREKT.
-        //Annars får man OptimisticConcurrencyException för att två trådar ändrar på samma entity samtidigt.
-        //I thread.sleep settings vi fick i tentabeskrivningen fungerar dock programmet UTAN locks här för dom hinner nästan alltid bli klara
-        //med databasupppdateringar innan en annan tråd går in och ändrar i samma enitity.
-
+       
+        // Nedanför låser jag två metoder, då har man möjlighet att köra simuleringen utan thread.sleep() i högsta hastighet och den blir fortfarande stabil
+        //Om inte så får man ett Exception just för att två av trådarna ändrar på samma entity samtidigt.
+        //programmet fungerar utan locks här just för att dem hinner nästan alltid bli klara med databasuppdateringar innan en annan tråd går in och ändrar samma entity.
         public static void MoveHamsterThread()
         {
             while (dagis.HamstersHomecoming < dagis.AmountToSimulate)
