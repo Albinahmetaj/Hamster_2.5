@@ -51,8 +51,8 @@ namespace Backend
                         if (e.Hamster.Hemfärd != null)
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine("Hamster med namn {0} åkte hem från aktivitet och motionerade {1} gånger", e.Hamster.Namn, e.Hamster.MotionsNivå);
-                            w.WriteLine("Hamster med namn {0} åkte hem från aktivitet och motionerade {1} gånger", e.Hamster.Namn, e.Hamster.MotionsNivå);
+                            Console.WriteLine("Hamster med namn {0} åkte hem från aktivitet och motionerade {1} gånger och motsvarar {2} minuter", e.Hamster.Namn, e.Hamster.MotionsNivå, e.Hamster.MotionsNivå * 60);
+                            w.WriteLine("Hamster med namn {0} åkte hem från aktivitet och motionerade {1} gånger och motsvarar {2}", e.Hamster.Namn, e.Hamster.MotionsNivå, e.Hamster.MotionsNivå * 60);
                             HamstersHome++;
                             Console.WriteLine("Totalt hamstrar som gick hem {0}", HamstersHome);
 

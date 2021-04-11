@@ -16,20 +16,20 @@ namespace Hamster_2._5AdvDotNET
     // TEST
     //public static class HamsterExtensions
     //{
-    //    //public static IEnumerable<Hamster> ToHamster(this IEnumerable<string> source)
-    //    //{
-    //    //    foreach (var line in source)
-    //    //    {
-    //    //        var columns = line.Split(',');
-    //    //        yield return new Hamster
-    //    //        {
-    //    //            Namn = columns[0],
-    //    //            Ålder = int.Parse(columns[1]),
-    //    //            Kön = columns[2],
-    //    //            ÄgarNamn = columns[3]
-    //    //        };
-    //    //    }
-    //    //}
+    //    public static IEnumerable<Hamster> ToHamster(this IEnumerable<string> source)
+    //    {
+    //        foreach (var line in source)
+    //        {
+    //            var columns = line.Split(',');
+    //            yield return new Hamster
+    //            {
+    //                Namn = columns[0],
+    //                Ålder = int.Parse(columns[1]),
+    //                Kön = columns[2],
+    //                ÄgarNamn = columns[3]
+    //            };
+    //        }
+    //    }
     //}
     class Program
     {

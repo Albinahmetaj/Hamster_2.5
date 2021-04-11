@@ -55,7 +55,7 @@ namespace Backend
                 Console.WriteLine("");
                 Console.WriteLine($"Checkar in hamstrar...Dagens datum och tid är: {date.ToString("dd/MM/yyyy")} 07:00:00");
                 Console.WriteLine();
-              
+
                 //var Patient = new Hamster(RandomLogic.GenerateIdentity(), RandomLogic.GenerateExerciseLevel());
 
                 //var hamster = Program.ProcessHamstrar("Hamsterlista30.csv");
